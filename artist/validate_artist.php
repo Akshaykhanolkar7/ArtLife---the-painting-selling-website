@@ -13,20 +13,22 @@
   session_start();
   $username = $_POST["email"];
   $password = $_POST["password"];
-  $sql = "SELECT * from customer WHERE email='$username'";
+  $sql = "SELECT * from artist WHERE email='$username'";
   $results = $conn->query($sql);
-  $row = mysqli_fetch_assoc($results);
-  
+  $row = $results->fetch_assoc();
+      
   if ($row["password"]==$password) {
     $_SESSION['user_at'] = $row['id'];
     $_SESSION['uname_at'] = $row['fname'];
-    $_SESSION['type'] = "Customer";
-    $_SESSION["cart"] = array();
-
-    header("Location: item.php?id=".$GET_['id']);
+    $_SESSION['type'] = "Artist";
+    
+    header("Location: ../index.php");
   }
   else{
-    echo $sql;
-      // echo '<script>window.location.href = "custloginpage.html";</script>';
+      echo '<script>window.location.href = "artistloginpage.php";</script>';
   }
+
+    // echo '<script language="javascript">';
+    // echo 'alert("message successfully sent")';
+    // echo '</script>';
 ?>
