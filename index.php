@@ -8,11 +8,11 @@
 	<?php 
 		session_start();
 		if (!isset($_SESSION['type'])) {
-			include 'home.php';
+			include 'other/home.php';
 		}
 		else {
 			if ($_SESSION['type']=="Artist") {
-				include 'artist_view.php';
+				include 'artist/artist_view.php';
 			}
 			elseif ($_SESSION['type']=="Customer") {
 				include 'home2.php';
